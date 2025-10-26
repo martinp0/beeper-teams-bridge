@@ -1,0 +1,7 @@
+# registration file for matrix-appservice-bridge / bridge-manager
+# Fill the values after starting the bridge once (it will generate secrets)
+# Example fields expected by bridge-manager
+namespace: beeper_teams
+as_token: "__REPLACE_AFTER_RUN__"
+hs_token: "__REPLACE_AFTER_RUN__"
+sender_localpart: "beeperbot"

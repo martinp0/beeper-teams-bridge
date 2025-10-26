@@ -1,0 +1,19 @@
+{
+  "name": "beeper-teams-bridge-scaffold",
+  "version": "0.1.0",
+  "description": "Minimal scaffold for a Beeper custom bridge that forwards MS Teams change-notifications via a local MCP on macOS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.4.1",
+    "body-parser": "^1.20.2",
+    "@azure/msal-node": "^2.30.0",
+    "matrix-appservice-bridge": "^3.10.0",
+    "yaml": "^2.3.1",
+    "dotenv": "^16.3.1"
+  }
+}
