@@ -1,26 +1,38 @@
-# Beeper MS Teams Bridge - scaffold
+# Beeper MS Teams Bridge - Scaffold
 
-Tento scaffold ti dá základní webhook pro Microsoft Graph (validation handshake + forwarding), jednoduchý subscription manager (create/renew stub), MSAL client-credentials helper a minimální matrix-appservice-bridge + `registration.yaml` a `README` podle Beeper best-practices.
+This scaffold provides a basic webhook for Microsoft Graph (validation handshake + forwarding), a simple subscription manager (create/renew stub), an MSAL client-credentials helper, and a minimal matrix-appservice-bridge. It follows Beeper's best practices for custom bridges.
 
-## Co obsahuje
-- `index.js` - Express webhook, validation handshake, forward stub.
+## Contents
+
+- `index.js` - Express webhook with validation handshake and forwarding stub.
 - `msalAuth.js` - MSAL ConfidentialClientApplication helper (client credentials flow).
-- `subscriptionManager.js` - createSubscription + placeholder forward function.
+- `subscriptionManager.js` - createSubscription function + placeholder forward function.
 - `matrixBridge.js` - minimal matrix-appservice-bridge starter.
-- `registration.yaml` - skeleton registračního souboru pro bridge-manager.
-- `.env.example` - env variables které je potřeba nastavit.
+- `registration.yaml` - skeleton registration file for bridge-manager.
+- `.env.example` - environment variables to configure.
 
-## Rychlé spuštění (lokálně s ngrok)
-1. `cp .env.example .env` a doplnit hodnoty.
-2. `npm install`
-3. Spusť ngrok: `ngrok http 3000` a zkopíruj HTTPS URL.
-4. Nastav `NGROK_URL` nebo použij přímo při volání `createSubscription`.
-5. `npm start`
-6. Vytvoř subscription k MS Graph (přes `createSubscription`) s `notificationUrl` nastaveným na `{NGROK_URL}/ms-teams-webhook`.
+## Quick Start (Local with ngrok)
 
-## Další kroky (doplnit podle Beeper best-practices)
-- Doplň mapping Teams user -> Matrix user (puppeting pattern) a rooms.
-- Implementuj bezpečné uložení tokenů + refresh handling.
-- Validuj notifikace (clientState, případné JWT podpisy podle Graph docs).
-- Přidej automatickou obnovu subscription (cron, background task).
-- Přizpůsob `registration.yaml` podle `bridge-manager` instrukcí a zaregistruj bridge.
+1. Copy `.env.example` to `.env` and fill in your credentials.
+2. Install dependencies:
+\`\`\`
+npm install
+\`\`\`
+3. Start ngrok to expose your local webhook:
+\`\`\`
+ngrok http 3000
+\`\`\`
+4. Set `NGROK_URL` in `.env` or use it directly when creating a subscription.
+5. Start the bridge:
+\`\`\`
+npm start
+\`\`\`
+6. Create a subscription in MS Graph using `createSubscription()` with `notificationUrl` set to `{NGROK_URL}/ms-teams-webhook`.
+
+## Next Steps (According to Beeper Best Practices)
+
+- Map Teams users → Matrix users (puppeting pattern) and channels → rooms.
+- Implement secure storage and refresh handling for tokens.
+- Validate notifications (`clientState`, JWT signature as per Graph docs).
+- Add automatic subscription renewal (cron job or background task).
+- Adjust `registration.yaml` according to bridge-manager instructions and register the bridge.
